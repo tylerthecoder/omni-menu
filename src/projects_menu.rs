@@ -8,7 +8,7 @@ pub mod projects_menu {
     use std::path::PathBuf;
     use std::process::Command;
 
-    const APP_ID: &str = "org.gtk_rs.ProjectsMenu"; // Changed from DirSearch
+    const APP_ID: &str = "org.gtk_rs.ProjectsMenu";
 
     fn get_dev_directories() -> Vec<PathBuf> {
         let home = dirs::home_dir().unwrap();

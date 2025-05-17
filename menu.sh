@@ -58,12 +58,11 @@ show_main_rofi_menu() {
     PROJECTS_MSG="(d) Dev Projects"
     SEARCH_MSG="(x) Search"
     OWL_SCRIPT_MSG="(s) Scripts"
-    NOTES_MSG="(n) Notes"
     QUIT_MSG="(q) Quit"
 
-    MENU_OPTIONS="$GO_MSG\n$MOVE_MSG\n$APPS_MSG\n$WINDOW_MSG\n$EMOJI_MSG\n$CLIPBOARD_MSG\n$PROJECTS_MSG\n$SEARCH_MSG\n$OWL_SCRIPT_MSG\n$NOTES_MSG\n$QUIT_MSG"
+    MENU_OPTIONS="$GO_MSG\n$MOVE_MSG\n$APPS_MSG\n$WINDOW_MSG\n$EMOJI_MSG\n$CLIPBOARD_MSG\n$PROJECTS_MSG\n$SEARCH_MSG\n$OWL_SCRIPT_MSG\n$QUIT_MSG"
 
-    ACTION=$(echo -e "$MENU_OPTIONS" | rofi -dmenu -p ">" -kb-select-1 'j' -kb-select-2 'k' -kb-select-3 'a' -kb-select-4 'w' -kb-select-5 'e' -kb-select-6 'c' -kb-select-7 'd' -kb-select-8 'x' -kb-select-9 's' -kb-select-10 'n' -kb-select-11 'q')
+    ACTION=$(echo -e "$MENU_OPTIONS" | rofi -dmenu -p ">" -kb-select-1 'j' -kb-select-2 'k' -kb-select-3 'a' -kb-select-4 'w' -kb-select-5 'e' -kb-select-6 'c' -kb-select-7 'd' -kb-select-8 'x' -kb-select-9 's' -kb-select-10 'q')
 
     case "$ACTION" in
         "$GO_MSG") go_to_workspace_2 ;;
@@ -75,7 +74,6 @@ show_main_rofi_menu() {
         "$PROJECTS_MSG") rust-menu projects ;;
         "$SEARCH_MSG") rust-menu search ;;
         "$OWL_SCRIPT_MSG") run_owl_script ;;
-        "$NOTES_MSG") view_notes ;;
         "$QUIT_MSG") exit 0 ;;
     esac
 }

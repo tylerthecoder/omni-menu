@@ -6,6 +6,6 @@ install-menu-sh:
 	cp menu.sh ~/.local/bin/omni-menu
 
 install:
-	install-rust-menu
-	install-menu-sh
+	make install-rust-menu
+	make install-menu-sh
 
