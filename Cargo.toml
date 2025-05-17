@@ -1,0 +1,14 @@
+[package]
+name = "omni-menu-rust"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "rust-menu"
+path = "src/main.rs"
+
+[dependencies]
+gtk = { version = "0.6", package = "gtk4" }
+fuzzy-matcher = "0.3"
+dirs = "5.0"
+regex = "1.5"
