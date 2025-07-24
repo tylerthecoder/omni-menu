@@ -31,6 +31,13 @@ run_owl_script() {
     fi
 }
 
+run_desk_script() {
+    script=$(ls ~/owl/common/desks | rofi -dmenu -i -p "Select desk")
+    if [ -n "$script" ]; then
+        ~/owl/common/desks/"$script"
+    fi
+}
+
 view_notes() {
     # Create a temporary file
     temp_file=$(mktemp)
@@ -50,24 +57,25 @@ view_notes() {
 # Main menu function (called by rofi)
 show_main_rofi_menu() {
     GO_MSG="(j) Go to Workspace"
-    MOVE_MSG="(k) Move Window"
+    MOVE_MSG="(m) Move Window"
     APPS_MSG="(a) Apps"
+    DESK_MSG="(k) Desk"
     WINDOW_MSG="(w) Window"
     EMOJI_MSG="(e) Emoji"
     CLIPBOARD_MSG="(c) Clipboard"
     PROJECTS_MSG="(d) Dev Projects"
     SEARCH_MSG="(x) Search"
     OWL_SCRIPT_MSG="(s) Scripts"
-    QUIT_MSG="(q) Quit"
 
-    MENU_OPTIONS="$GO_MSG\n$MOVE_MSG\n$APPS_MSG\n$WINDOW_MSG\n$EMOJI_MSG\n$CLIPBOARD_MSG\n$PROJECTS_MSG\n$SEARCH_MSG\n$OWL_SCRIPT_MSG\n$QUIT_MSG"
+    MENU_OPTIONS="$GO_MSG\n$MOVE_MSG\n$APPS_MSG\n$DESK_MSG\n$WINDOW_MSG\n$EMOJI_MSG\n$CLIPBOARD_MSG\n$PROJECTS_MSG\n$SEARCH_MSG\n$OWL_SCRIPT_MSG\n$QUIT_MSG"
 
-    ACTION=$(echo -e "$MENU_OPTIONS" | rofi -dmenu -p ">" -kb-select-1 'j' -kb-select-2 'k' -kb-select-3 'a' -kb-select-4 'w' -kb-select-5 'e' -kb-select-6 'c' -kb-select-7 'd' -kb-select-8 'x' -kb-select-9 's' -kb-select-10 'q')
+    ACTION=$(echo -e "$MENU_OPTIONS" | rofi -dmenu -p ">" -kb-select-1 'j' -kb-select-2 'm' -kb-select-3 'a' -kb-select-4 'k' -kb-select-5 'w' -kb-select-6 'e' -kb-select-7 'c' -kb-select-8 'd' -kb-select-9 'x' -kb-select-10 's')
 
     case "$ACTION" in
         "$GO_MSG") go_to_workspace_2 ;;
         "$MOVE_MSG") move_window_to_workspace_2 ;;
         "$APPS_MSG") rofi -show drun ;;
+        "$DESK_MSG") run_desk_script ;;
         "$WINDOW_MSG") rofi -show window ;;
         "$EMOJI_MSG") rofi -modi "emoji" -show emoji ;;
         "$CLIPBOARD_MSG") rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}' ;;
